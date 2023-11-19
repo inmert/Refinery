@@ -18,6 +18,7 @@ export const SearchResultsList = ({ results }) => {
           <th>Commit</th>
           <th>Parent Resource ID</th>
         </tr>
+
       </thead>
       <tbody>
         {results.map((result, index) => (

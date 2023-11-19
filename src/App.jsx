@@ -16,6 +16,7 @@ function App() {
       </div>
 
       {results && results.length > 0 && <SearchResultsList results={results} />}
+      
 
 
     </div>
