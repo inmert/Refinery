@@ -1,17 +1,29 @@
+// Inside SearchResult.js
 import React from "react";
-import "./SearchResult.css";
 
-export const SearchResult = ({ result }) => {
-  // Assuming result is an object with properties
-  const renderTableCells = () => {
-    return Object.values(result).map((value, index) => (
-      <td key={index}>{value}</td>
-    ));
-  };
+export const SearchResult = ({ result, index }) => {
+  const {
+    level,
+    message,
+    resourceId,
+    timestamp,
+    traceId,
+    spanId,
+    commit,
+    parentResourceId,
+  } = result;
 
   return (
-    <tr className="search-result" onClick={(e) => alert(`You selected ${result}!`)}>
-      {renderTableCells()}
+    <tr>
+      <td>{index}</td>
+      <td>{level}</td>
+      <td>{message}</td>
+      <td>{resourceId}</td>
+      <td>{timestamp}</td>
+      <td>{traceId}</td>
+      <td>{spanId}</td>
+      <td>{commit}</td>
+      <td>{parentResourceId}</td>
     </tr>
   );
 };
