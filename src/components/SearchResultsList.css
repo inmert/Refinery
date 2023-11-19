@@ -1,13 +1,9 @@
 .results-table {
   width: 80%;
-  /* Adjust the width as needed */
   margin: 50px auto;
-  /* Center the table and provide top and bottom margin */
   border-collapse: collapse;
   border-radius: 5px;
-  /* Set the border-radius for rounded edges */
   overflow: hidden;
-  /* Ensure rounded corners are applied */
   background-color: #ddd;
 }
 
@@ -27,7 +23,6 @@
   background-color: #f5f5f5;
 }
 
-/* Optional: Add some spacing around the input and icon */
 .input-wrapper {
   margin-bottom: 20px;
 }
