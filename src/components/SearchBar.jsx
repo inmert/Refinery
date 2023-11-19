@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
-import { fetchData, filterData } from "./dataService"; // Adjust the path based on your file structure
+import { fetchData, filterData } from "./dataService"; 
 import "./SearchBar.css";
 
 export const SearchBar = ({ setResults, placeVal, propName }) => {
