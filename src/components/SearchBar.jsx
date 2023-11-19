@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import "./SearchBar.css";
-import { SearchResultsList } from "./SearchResultsList";
 
 export const SearchBar = ({ setResults, placeVal, propName }) => {
   const [input, setInput] = useState("");
-  const [perPage, setPerPage] = useState(10);
+  const [perPage, setPerPage] = useState(50);
   const [currentPage, setCurrentPage] = useState(1);
   const [tableResults, setTableResults] = useState([]);
   const [showOptions, setShowOptions] = useState(false);
@@ -43,11 +42,6 @@ export const SearchBar = ({ setResults, placeVal, propName }) => {
     fetchData(value, propName);
   };
 
-  const handlePerPageChange = (value) => {
-    setPerPage(value);
-    setCurrentPage(1); // Reset to the first page when the results per page is changed
-    setResults(tableResults.slice(0, value));
-  };
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
@@ -62,12 +56,6 @@ export const SearchBar = ({ setResults, placeVal, propName }) => {
         <FaSearch id="search-icon" size={20} />
         <input value={input} placeholder={placeVal} onChange={(e) => handleChange(e.target.value)} />
       </div>
-      {showOptions && (
-        <div className="results-per-page">
-          <label>Results per page:</label>
-          <input type="number" min="1" value={perPage} onChange={(e) => handlePerPageChange(e.target.value)} />
-        </div>
-      )}
       {showOptions && (
         <div className="pagination">
           <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
