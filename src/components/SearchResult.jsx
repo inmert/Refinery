@@ -9,7 +9,7 @@ export const SearchResult = ({ result, index }) => {
     traceId,
     spanId,
     commit,
-    parentResourceId,
+    metadata,
   } = result;
 
   return (
@@ -22,7 +22,7 @@ export const SearchResult = ({ result, index }) => {
       <td>{traceId}</td>
       <td>{spanId}</td>
       <td>{commit}</td>
-      <td>{parentResourceId}</td>
+      <td>{metadata.parentResourceId}</td>
     </tr>
   );
 };

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
+import { fetchData, filterData } from "./dataService"; // Adjust the path based on your file structure
 import "./SearchBar.css";
 
 export const SearchBar = ({ setResults, placeVal, propName }) => {
   const [input, setInput] = useState("");
-  const [perPage, setPerPage] = useState(50);
-  const [currentPage, setCurrentPage] = useState(1);
   const [tableResults, setTableResults] = useState([]);
   const [showOptions, setShowOptions] = useState(false);
 
@@ -17,37 +16,18 @@ export const SearchBar = ({ setResults, placeVal, propName }) => {
     }
   }, [tableResults]);
 
-  const fetchData = (value, property) => {
-    fetch("https://raw.githubusercontent.com/inmert/inmert.github.io/master/input.json")
-      .then((response) => response.json())
-      .then((json) => {
-        const results = json.filter((item) => {
-          return (
-            value &&
-            item &&
-            item[property] &&
-            item[property].toLowerCase().includes(value.toLowerCase())
-          );
-        });
-        const startIndex = (currentPage - 1) * perPage;
-        const endIndex = startIndex + perPage;
-        setResults(results.slice(0, perPage));
-        setTableResults(results);
-      });
-  };
-
-  const handleChange = (value) => {
+  const handleChange = async (value) => {
     setInput(value);
-    setCurrentPage(1); // Reset to the first page when a new search is performed
-    fetchData(value, propName);
-  };
 
+    try {
+      const data = await fetchData();
+      const results = filterData(data, value, propName);
 
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
-    const startIndex = (newPage - 1) * perPage;
-    const endIndex = startIndex + perPage;
-    setResults(tableResults.slice(startIndex, endIndex));
+      setTableResults(results);
+      setResults(results);
+    } catch (error) {
+      // Handle error (e.g., show an error message to the user)
+    }
   };
 
   return (
@@ -57,14 +37,10 @@ export const SearchBar = ({ setResults, placeVal, propName }) => {
         <input value={input} placeholder={placeVal} onChange={(e) => handleChange(e.target.value)} />
       </div>
       {showOptions && (
-        <div className="pagination">
-          <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-            Previous
-          </button>
-          <span className="span-title">Page {currentPage}</span>
-          <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage * perPage >= tableResults.length}>
-            Next
-          </button>
+        <div>
+          {tableResults.map((result) => (
+            <div key={result.id}></div>
+          ))}
         </div>
       )}
     </div>
