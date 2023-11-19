@@ -12,12 +12,10 @@ function App() {
       <h1 className="title">Refinery</h1>
 
       <div className="search-bar">
-        <SearchBar setResults={setResults} placeVal={"Message"} propName={"message"}/>
+        <SearchBar setResults={setResults} placeVal={"Message"} propName={"message"} />
       </div>
 
       {results && results.length > 0 && <SearchResultsList results={results} />}
-      
-
 
     </div>
   );
