@@ -1,4 +1,3 @@
-// Inside SearchResult.js
 import React from "react";
 
 export const SearchResult = ({ result, index }) => {

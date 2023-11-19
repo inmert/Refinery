@@ -1,13 +1,18 @@
 .results-table {
-  width: 80%; /* Adjust the width as needed */
-  margin: 50px auto; /* Center the table and provide top and bottom margin */
+  width: 80%;
+  /* Adjust the width as needed */
+  margin: 50px auto;
+  /* Center the table and provide top and bottom margin */
   border-collapse: collapse;
-  border-radius: 5px; /* Set the border-radius for rounded edges */
-  overflow: hidden; /* Ensure rounded corners are applied */
+  border-radius: 5px;
+  /* Set the border-radius for rounded edges */
+  overflow: hidden;
+  /* Ensure rounded corners are applied */
   background-color: #ddd;
 }
 
-.results-table th, .results-table td {
+.results-table th,
+.results-table td {
   border: 1px solid #646464;
   padding: 8px;
   text-align: left;
