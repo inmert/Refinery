@@ -30,6 +30,9 @@ function App() {
         <div className="search-bar-mini">
           <SearchBar setResults={setResults} placeVal={"Commit"} propName={"commit"} />
         </div>
+        <div className="search-bar-mini">
+          <SearchBar setResults={setResults} placeVal={"timestamp"} propName={"timestamp"} />
+        </div>
         
       </div>
 
